@@ -1,0 +1,10 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: testcloud-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 918aebb5-c225-435a-8083-3b7e8c5a20fe
