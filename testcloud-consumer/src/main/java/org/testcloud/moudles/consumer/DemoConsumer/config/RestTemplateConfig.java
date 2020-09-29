@@ -1,4 +1,4 @@
-package org.testcloud.moudles.consumer.DemoConsumer;
+package org.testcloud.moudles.consumer.DemoConsumer.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

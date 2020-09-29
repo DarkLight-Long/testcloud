@@ -1,6 +1,5 @@
-package org.testcloud.moudles.consumer.DemoConsumer;
+package org.testcloud.moudles.consumer.DemoConsumer.controller;
 
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.testcloud.moudles.consumer.DemoConsumer.api.FeignConsumerApi;
 
 @RequestMapping("/nacos/consumer")
 @RestController
@@ -29,6 +29,9 @@ public class DemoConsumerController {
                 serviceInstance.getHost(), serviceInstance.getPort(), name);
         System.out.println( "url => " + url);
         return restTemplate.getForObject(url, String.class);
+//        System.out.println(name);
+//        return restTemplate.getForObject("http://localhost:8080/nacos/provider/" +
+//                name, String.class);
     }
 
     @GetMapping("/feign/{name}")
