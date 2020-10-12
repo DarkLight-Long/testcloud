@@ -21,7 +21,15 @@ spring:
         min-idle: 0
       shutdown-timeout: 1000
 
-
-
 provider:
   namesrvAddress: 127.0.0.1:9876
+
+config:
+  list:
+    - name: zhangsan
+      age: 25
+      sex: 男
+    - name: lisi
+      age: 30
+      sex: 女
+
