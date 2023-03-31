@@ -4,10 +4,32 @@ spring:
   application:
     name: testcloud-consumer
   cloud:
-    nacos:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#        namespace: 918aebb5-c225-435a-8083-3b7e8c5a20fe
+#      config:
+#        server-addr: 127.0.0.1:8848
+#        namespace: 918aebb5-c225-435a-8083-3b7e8c5a20fe
+    config:
       discovery:
-        server-addr: 127.0.0.1:8848
-        namespace: 918aebb5-c225-435a-8083-3b7e8c5a20fe
-      config:
-        server-addr: 127.0.0.1:8848
-        namespace: 918aebb5-c225-435a-8083-3b7e8c5a20fe
+        enabled: true
+        service-id: shark-base-server
+      profile: base
+      name: config
+
+
+
+eureka:
+  instance:
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+    #Eureka客户端向服务端发送心跳的时间间隔，单位为秒(默认是30秒)
+    lease-renewal-interval-in-seconds: 10
+    #Eureka服务端在收到最后一次心跳后等待时间上限，单位为秒(默认是90秒)，超时将剔除服务
+    lease-expiration-duration-in-seconds: 20
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    #初始化实例信息到Eureka服务端的间隔时间，（s）默认40
+    initial-instance-info-replication-interval-seconds: 5
