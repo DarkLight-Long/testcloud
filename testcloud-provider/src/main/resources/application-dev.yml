@@ -20,7 +20,7 @@ spring:
         #  最小等待连接时间 0无限制
         min-idle: 0
       shutdown-timeout: 1000
-
+# rocketMQ
 provider:
   namesrvAddress: 127.0.0.1:9876
 

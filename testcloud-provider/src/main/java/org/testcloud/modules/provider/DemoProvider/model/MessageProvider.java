@@ -24,14 +24,9 @@ public class MessageProvider {
         producer.setProducerGroup(producerGroup);
     }
 
-    public void start() {
-        try {
-            producer.start();
-            log.info("producer启动成功");
-        }catch (MQClientException e) {
-            e.printStackTrace();
-            log.error("producer启动失败");
-        }
+    public void start() throws Exception {
+        producer.start();
+        log.info("producer启动成功");
     }
 
     public void shutDown() {
@@ -39,14 +34,9 @@ public class MessageProvider {
         log.info("producer关闭成功");
     }
 
-    public void sendMessage(Message message) {
-        try {
-            SendResult sendResult = producer.send(message);
-            System.out.println(sendResult.toString());
-        }catch (Exception e) {
-            e.printStackTrace();
-            log.error("producer发送消息失败");
-        }
+    public void sendMessage(Message message) throws Exception {
+        SendResult sendResult = producer.send(message, 20000);
+        System.out.println(sendResult.toString());
     }
 
 }

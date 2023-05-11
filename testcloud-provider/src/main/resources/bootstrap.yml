@@ -8,3 +8,26 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
         namespace: 918aebb5-c225-435a-8083-3b7e8c5a20fe
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: 918aebb5-c225-435a-8083-3b7e8c5a20fe
+
+# 暂时只适配了nacos
+dubbo:
+  application:
+    name: testcloud-provider
+    # qos功能未知 是否启动qos
+    qos-enable: false
+    # 默认端口 不可重复
+    qos-port: 2222
+    # qos是否接受任何主机发起的命令
+    qos-accept-foreign-ip: false
+  # 配置提供服务的协议信息
+  protocol:
+    name: dubbo
+    # port为provider服务端口，默认时20880，配置-1时使用随机端口
+    port: 20880
+  registry:
+    address: nacos://127.0.0.1:8848
+    parameters.namespace: 918aebb5-c225-435a-8083-3b7e8c5a20fe
+    parameters.register-consumer-url: true
