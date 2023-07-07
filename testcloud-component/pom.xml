@@ -18,6 +18,10 @@
         <module>api</module>
         <module>dubbo-consumer</module>
         <module>dubbo-provider</module>
+        <module>rabbit-provider</module>
+        <module>rabbit-consumer</module>
+        <module>rocketmq-consumer</module>
+        <module>rocketmq-provider</module>
     </modules>
 
     <dependencies></dependencies>

@@ -8,4 +8,6 @@ nacos-server需要多开放两个端口（nacos2.0版本修改的）
 8848，9848，9849
 ### RocketMQ(4.7.1)
 启动nameserver和broker
-单机启动时需要修改broker配置（brokerIP默认是主机外网ip）（修改内容和相关脚本见）
+单机启动时需要修改broker配置（brokerIP默认是主机外网,而外网ip无法访问）（修改内容和相关脚本见）
+### 关于Component组件中的dubbo-consumer
+使用示例暂时使用CommandLineRunner实现，随项目启动自动执行
