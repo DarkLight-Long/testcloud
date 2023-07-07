@@ -1,3 +1,3 @@
-#Description
+# Description
 broker为broker配置
 start为rocketMQ镜像启动脚本(启动nameserver和broker)
