@@ -13,24 +13,19 @@
 	<name>provider</name>
 	<description>Demo project for Spring Boot</description>
 
-	<dependencies>
-		<!--	nacos注册中心	-->
-		<dependency>
-			<groupId>com.alibaba.cloud</groupId>
-			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.cloud</groupId>
-			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-		</dependency>
-		<!--	eureka注册中心	-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>-->
-<!--			<version>4.0.0</version>-->
-<!--		</dependency>-->
+	<properties>
+		<rocketmq.version>4.9.4</rocketmq.version>
+	</properties>
 
-		<!--	dubbo-provider	-->
+	<dependencies>
+		<!--  rocketMQ      -->
+		<dependency>
+			<groupId>org.apache.rocketmq</groupId>
+			<artifactId>rocketmq-client</artifactId>
+			<version>${rocketmq.version}</version>
+		</dependency>
+
+<!--			dubbo-provider	-->
 		<dependency>
 			<groupId>org.testcloud</groupId>
 			<artifactId>dubbo-provider</artifactId>

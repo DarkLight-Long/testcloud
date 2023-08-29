@@ -6,7 +6,7 @@ import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.testcloud.modules.provider.DemoProvider.config.PropertiesConfig;
-@Slf4j
+
 public class MessageProvider {
 
     private DefaultMQProducer producer;
@@ -26,12 +26,12 @@ public class MessageProvider {
 
     public void start() throws Exception {
         producer.start();
-        log.info("producer启动成功");
+        System.out.println("producer启动成功");
     }
 
     public void shutDown() {
         producer.shutdown();
-        log.info("producer关闭成功");
+        System.out.println("producer关闭成功");
     }
 
     public void sendMessage(Message message) throws Exception {

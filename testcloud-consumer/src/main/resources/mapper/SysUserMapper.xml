@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.testcloud.modules.consumer.DemoConsumer.mapper.SysUserMapper">
+
+    <resultMap id="result" type="org.testcloud.modules.consumer.DemoConsumer.domain.SysUser">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="account" property="account" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+
+        <result column="age" property="age" jdbcType="INTEGER"/>
+        <result column="sex" property="sex" jdbcType="INTEGER"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" javaType="date" />
+        <result column="update_time" property="updateTime" javaType="date" />
+        <result column="status" property="status" javaType="_int" />
+    </resultMap>
+
+    <sql id="all">
+        SELECT id, user_name, account, `password`, age, sex, phone, address, create_time, update_time
+        FROM user_info
+    </sql>
+
+    <select id="selectAll" resultType="org.testcloud.modules.consumer.DemoConsumer.domain.SysUser">
+        <include refid="all" />
+        <where>
+            <if test="account == 'abc'.toString()">
+                and account = 1
+                <!-- xml 不支持 < ,所以-->
+                <!-- 1 CDATA           -->
+                and account <![CDATA[ <= ]]> 3
+                <!-- 2 转义字符           -->
+                and account &lt;= 3
+
+            </if>
+            <if test="account == '2'.toString()">
+                and account = #{account}
+            </if>
+            <if test="account == '3'.toString()">
+                and account = #{account}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="org.testcloud.modules.consumer.DemoConsumer.domain.SysUser" keyProperty="id">
+        INSERT INTO mydemo.user_info(user_name, account, password, age, sex, phone, address)
+        VALUES(#{userName},#{account},#{password},#{age},#{sex},#{phone},#{address})
+    </insert>
+
+    <insert id="insertBatch" parameterType="org.testcloud.modules.consumer.DemoConsumer.domain.SysUser">
+        INSERT INTO mydemo.user_info(user_name, account, password, age, sex, phone, address)
+        values
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{userName},#{account},#{password},#{age},#{sex},#{phone},#{address}
+        </foreach>
+    </insert>
+</mapper>
